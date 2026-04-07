@@ -8,7 +8,7 @@
   </head>
   <body>
     <main class="container">
-      <h1>Minhas Tarefas</h1>
+      <h1>Minhas Tarefas do Dia</h1>
 
       <form id="task-form">
         <input
@@ -20,6 +20,12 @@
         />
         <button type="submit">Adicionar</button>
       </form>
+
+      <nav class="filter-bar" aria-label="Filtrar tarefas">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="pending">Pendentes</button>
+        <button class="filter-btn" data-filter="completed">Concluídas</button>
+      </nav>
 
       <ul id="task-list" aria-label="Lista de tarefas"></ul>
     </main>

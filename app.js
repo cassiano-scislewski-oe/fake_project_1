@@ -1,6 +1,9 @@
 const form = document.getElementById('task-form');
 const input = document.getElementById('task-input');
 const taskList = document.getElementById('task-list');
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+let activeFilter = 'all';
 
 // Versão 2.0 - atualizado para testes
 
@@ -39,9 +42,14 @@ const createTaskElement = (task) => {
 };
 
 const renderTasks = () => {
-  const tasks = loadTasks();
+  const allTasks = loadTasks();
+  const filtered = allTasks.filter((task) => {
+    if (activeFilter === 'pending') return !task.completed;
+    if (activeFilter === 'completed') return task.completed;
+    return true;
+  });
   taskList.innerHTML = '';
-  tasks.forEach((task) => taskList.appendChild(createTaskElement(task)));
+  filtered.forEach((task) => taskList.appendChild(createTaskElement(task)));
 };
 
 const addTask = (text) => {
@@ -65,6 +73,15 @@ const removeTask = (id) => {
   saveTasks(tasks);
   renderTasks();
 };
+
+filterBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    activeFilter = btn.dataset.filter;
+    filterBtns.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTasks();
+  });
+});
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
