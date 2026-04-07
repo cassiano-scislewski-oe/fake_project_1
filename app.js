@@ -2,6 +2,8 @@ const form = document.getElementById('task-form');
 const input = document.getElementById('task-input');
 const taskList = document.getElementById('task-list');
 
+// Versão 2.0 - atualizado para testes
+
 const loadTasks = () => {
   const saved = localStorage.getItem('tasks');
   return saved ? JSON.parse(saved) : [];
