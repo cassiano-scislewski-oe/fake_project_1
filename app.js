@@ -1,10 +1,10 @@
 const form = document.getElementById('task-form');
 const input = document.getElementById('task-input');
 const taskList = document.getElementById('task-list');
-
+//editado para teste
 const loadTasks = () => {
   const saved = localStorage.getItem('tasks');
-  
+
   return saved ? JSON.parse(saved) : [];
 };
 
