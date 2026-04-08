@@ -4,6 +4,7 @@ const taskList = document.getElementById('task-list');
 
 const loadTasks = () => {
   const saved = localStorage.getItem('tasks');
+  
   return saved ? JSON.parse(saved) : [];
 };
 
